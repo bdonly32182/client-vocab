@@ -1,7 +1,7 @@
 import React ,{Component} from 'react'
 import {reduxForm,Field,FieldArray} from 'redux-form'
 import {connect} from 'react-redux'
-import VocabFormfield from '../Form/validForm/VocabFormfield'
+import VocabFormfield from './validForm/VocabFormfield'
 class AnswerForm extends Component {
     renderChoice=({fields})=>(
         <ul>

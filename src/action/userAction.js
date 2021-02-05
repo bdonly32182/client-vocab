@@ -6,7 +6,8 @@ export const login =(value,history)=>{
             .then(res=>{
                 console.log(res.data);
                 res.data.user&&res.data.user.role === "admin"?
-                dispatch ({type:USER_LOGIN,payload:res.data})
+               
+                dispatch ({type:USER_LOGIN,payload:res.data})&& history.push('/listAnswer')
                 :
                 dispatch ({type:LOGIN_FAIL,payload:res.data})
             }) 

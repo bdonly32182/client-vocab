@@ -2,11 +2,13 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Header from '../component/Header'
 import {list_answer,delete_answer} from '../action'
-let Token = localStorage.getItem('token')
+
 
 class ListAnswer extends React.Component{
-    componentDidMount(){
+   async componentDidMount (){
+    let Token =await localStorage.getItem('token')
         this.props.list_answer()
+        console.log(Token);
         if (!Token) {
             this.props.history.push('/')
         }

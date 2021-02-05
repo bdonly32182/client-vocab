@@ -5,35 +5,24 @@ import {login} from '../action'
 import ListWord from './ListWord'
 import Welcome from './Welcome'
 import Header from '../component/Header'
-let Token = localStorage.getItem('token')
-class Login extends Component{
-    componentDidMount(){
-        
 
-        const {users} = this.props
-        // if (users.token||Token) {
-        //     this.props.history.push('/listword')
-        // }
-      
+class Login extends Component{
+   async componentDidMount(){
+        
+    let Token =await localStorage.getItem('token')
+     if (Token) {
+        this.props.history.push('/listAnswer')
+
+     }
     }
    
     render(){
         const {formValue,login,users,history} = this.props
-
+        console.log(users);
         return(
             <div className="container-fluid p-3 mb-2 bg-warning">
-                {!users.token &&!Token? <div> <br />
-             <br />                  
-             <br />
-             <br />
-             <br />
-             <br />
-             <br />
-             </div>:null}
-                {users.token ||Token ?
-                 <div className="container-fluid p-3 mb-2 bg-info">
-                     <Welcome />
-                </div>:
+             
+                {!users.token &&
                 <div className="row">
                     <div className="col">
                                 
@@ -44,7 +33,7 @@ class Login extends Component{
                                  <h1 className="text-center text-white">
                                          Login 
                                 </h1>
-                                <LoginForm  onSubmitLogin={()=>login(formValue)} />
+                                <LoginForm  onSubmitLogin={()=>login(formValue,history)} />
                        
                     </div>
                     <div className="col">
